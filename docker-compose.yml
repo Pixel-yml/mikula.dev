@@ -3,7 +3,7 @@ version: "3.5"
 services:
   mikula.dev-nginx:
     build:
-      context: ./web.mikula.dev
+      context: ./Dockerfile
       dockerfile: Dockerfile
     ports:
       - "192.168.1.121:80:80/tcp"
