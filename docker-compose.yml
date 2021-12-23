@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+  mikula.dev-nginx:
+    build:
+      context: ./web.mikula.dev
+      dockerfile: Dockerfile
+    ports:
+      - "192.168.1.121:80:80/tcp"
+      - "192.168.1.121:80:80/udp"
+    environment:
+      - NGINX_PORT=80
+    restart: always
