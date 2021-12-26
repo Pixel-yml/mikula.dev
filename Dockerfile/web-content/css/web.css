@@ -1,6 +1,10 @@
 .view{
     background-color: green;
+    
 }
 .main {
-    display: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
