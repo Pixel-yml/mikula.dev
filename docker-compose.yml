@@ -1,7 +1,7 @@
 version: "3.5"
 
 services:
-  mikula.dev-nginx:
+  mikula.dev:
     build:
       context: ./Dockerfile
       dockerfile: Dockerfile
