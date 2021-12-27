@@ -42,7 +42,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           tags: ${{ steps.docker_meta.outputs.tags }} 
-          file: ./Dockerfile/Dockerfile
+          file: ./Dockerfile/
           
       - name: Monitor image for vulnerabilities with Snyk
         uses: snyk/actions/docker@master
@@ -58,4 +58,4 @@ jobs:
         with:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
-          file: ./Dockerfile/Dockerfile
+          file: ./Dockerfile/
