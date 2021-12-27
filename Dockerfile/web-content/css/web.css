@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 .view{
     background-color: rgb(117, 180, 180);
     
 }
-.main {   
+.main {
+    font-family: 'Press Start 2P', cursive;
     text-align: center;
     color: azure;
 }
