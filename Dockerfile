@@ -1,6 +1,6 @@
 FROM nginx
 
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 
 WORKDIR /etc/nginx/
 COPY nginx.conf ./
