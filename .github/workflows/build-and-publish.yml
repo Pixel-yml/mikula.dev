@@ -50,7 +50,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           command: monitor
-          image: "ghcr.io/pixel-yml/mikula.dev:main"
+          image: "ghcr.io/pixel-yml/mikula.dev:master"
           args: --file=Dockerfile --project-name=mikula.dev
 
       - name: Push image
