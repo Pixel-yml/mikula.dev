@@ -51,8 +51,8 @@ jobs:
         with:
           command: monitor
           image: "ghcr.io/pixel-yml/mikula.dev:main"
-          args: --file=Dockerfile --project-name=mikula.dev 
-          
+          args: --file=Dockerfile --project-name=mikula.dev
+
       - name: Push image
         uses: docker/build-push-action@v2
         with:
