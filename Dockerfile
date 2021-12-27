@@ -1,5 +1,7 @@
 FROM nginx
 
+RUN apt-get update
+
 WORKDIR /etc/nginx/
 COPY nginx.conf ./
 
