@@ -49,7 +49,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          command: monitor
+          command: test
           image: "ghcr.io/pixel-yml/mikula.dev:master"
           args: --file=Dockerfile --project-name=mikula.dev
 
