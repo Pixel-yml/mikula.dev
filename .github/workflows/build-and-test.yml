@@ -18,13 +18,28 @@ jobs:
         with:
           log_level: DEBUG
           root: web-content/
-          format: text
+          format: json
           css: true
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload HTML Validator Logs
+        uses: actions/upload-artifact@v2
         with:
           name: html_validator_log
           path: log.log
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.1.1
+        with:
+          args: --verbose --no-progress **/*.md **/*.html
+          format: json
+          output: /link_ckeck.txt
+          fail: true
+
+      - name: Upload Link Checker Logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: link_checker_logs
+          path: link_ckeck.txt
 
       - name: Docker meta
         id: docker_meta
