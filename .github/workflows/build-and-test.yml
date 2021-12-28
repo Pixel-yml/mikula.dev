@@ -33,21 +33,6 @@ jobs:
           fail: true
         env:
           LYCHEE_OUT: /tmp/lychee/out.md
-          
-      - name: Create Issue From File
-        if: ${{ steps.lychee.outputs.exit_code != 0 }}
-        uses: peter-evans/create-issue-from-file@v3
-        with:
-          title: Link Checker Report
-          content-filepath: /tmp/lychee/out.md
-          labels: report, automated issue
-          
-      - name: Upload Link Checker Logs
-        uses: actions/upload-artifact@v2
-        with:
-          name: link_checker_logs
-          path: /tmp/lychee/out.md
-          if-no-files-found: ignore
 
       - name: Docker meta
         id: docker_meta
