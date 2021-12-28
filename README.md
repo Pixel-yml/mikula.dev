@@ -10,4 +10,7 @@
   <a href='https://sonarcloud.io/summary/new_code?id=Pixel-yml_mikula.dev'><img src='https://sonarcloud.io/api/project_badges/measure?project=Pixel-yml_mikula.dev&metric=bugs'></a>
   <a href='https://sonarcloud.io/summary/new_code?id=Pixel-yml_mikula.dev'><img src='https://sonarcloud.io/api/project_badges/measure?project=Pixel-yml_mikula.dev&metric=code_smells'></a>
   <a href='https://sonarcloud.io/summary/new_code?id=Pixel-yml_mikula.dev'><img src='https://sonarcloud.io/api/project_badges/measure?project=Pixel-yml_mikula.dev&metric=ncloc'></a>
+  <br>
+  <a href='https://github.com/Pixel-yml/mikula.dev/actions/workflows/build-test-and-publish.yml'><img src='https://github.com/Pixel-yml/mikula.dev/actions/workflows/build-test-and-publish.yml/badge.svg?branch=master'></a>
+  <a href='https://github.com/Pixel-yml/mikula.dev/actions/workflows/build-and-test.yml'><img src='https://github.com/Pixel-yml/mikula.dev/actions/workflows/build-and-test.yml/badge.svg?branch=master'></a>  
 </p>
