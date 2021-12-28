@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   mikula.dev:
-    image: "pixel-yml/mikula.dev:master"
+    image: "ghcr.io/pixel-yml/mikula.dev:master"
     ports:
       - "192.168.1.121:80:80/tcp"
       - "192.168.1.121:80:80/udp"
