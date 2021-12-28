@@ -43,13 +43,23 @@ jobs:
         with:
           tags: ${{ steps.docker_meta.outputs.tags }} 
           file: ./Dockerfile
-          
-      - name: Run Snyk to check Docker image for vulnerabilities
+
+      - name: Run Snyk to check Docker image for vulnerabilities [monitor]
         uses: snyk/actions/docker@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           command: monitor
+          image: "ghcr.io/pixel-yml/mikula.dev:master"
+          args: --file=Dockerfile --project-name=mikula.dev
+          
+      - name: Run Snyk to check Docker image for vulnerabilities [test]
+        continue-on-error: true
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
           image: "ghcr.io/pixel-yml/mikula.dev:master"
           args: --file=Dockerfile --project-name=mikula.dev
           
