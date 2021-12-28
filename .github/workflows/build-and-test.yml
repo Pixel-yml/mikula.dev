@@ -26,7 +26,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: html_validator_log
-          path: validator.log
+          path: log.log
 
       - name: Docker meta
         id: docker_meta
