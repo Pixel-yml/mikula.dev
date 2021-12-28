@@ -1,6 +1,5 @@
 FROM nginx:stable-alpine
 
-RUN apt-get update && apt-get dist-upgrade -y
 
 WORKDIR /etc/nginx/
 COPY nginx.conf ./
