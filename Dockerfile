@@ -1,6 +1,6 @@
-FROM nginx
+FROM nginx:stable
 
-RUN apt-get install curl -y && apt-get update && apt-get dist-upgrade -y
+RUN apt-get update && apt-get dist-upgrade -y
 
 WORKDIR /etc/nginx/
 COPY nginx.conf ./
