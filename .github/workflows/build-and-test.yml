@@ -15,12 +15,12 @@ jobs:
       - name: Check out
         uses: actions/checkout@v2
 
-      - name: HTML5Validator
+      - name: HTML5 Validator
         uses: Cyb3r-Jak3/html5validator-action@v7.0.0
         with:
+          log_level: DEBUG
           root: web-content/
-          blacklist: img, favicon
-          format: xml
+          format: text
           css: true
 
       - uses: actions/upload-artifact@v2
