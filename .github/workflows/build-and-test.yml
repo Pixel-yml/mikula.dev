@@ -30,7 +30,6 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.2.0
         with:
-          args: --verbose --no-progress **/*.md **/*.html
           fail: true
         env:
           LYCHEE_OUT: /tmp/lychee/out.md
