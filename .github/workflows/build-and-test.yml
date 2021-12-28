@@ -18,13 +18,36 @@ jobs:
         with:
           log_level: DEBUG
           root: web-content/
-          format: text
+          format: json
           css: true
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload HTML Validator Logs
+        uses: actions/upload-artifact@v2
         with:
           name: html_validator_log
           path: log.log
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.2.0
+        with:
+          fail: true
+        env:
+          LYCHEE_OUT: /tmp/lychee/out.md
+          
+      - name: Create Issue From File
+        if: ${{ steps.lychee.outputs.exit_code != 0 }}
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: Link Checker Report
+          content-filepath: /tmp/lychee/out.md
+          labels: report, automated issue
+          
+      - name: Upload Link Checker Logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: link_checker_logs
+          path: /tmp/lychee/out.md
+          if-no-files-found: ignore
 
       - name: Docker meta
         id: docker_meta
