@@ -1,4 +1,4 @@
-FROM nginx:stable
+FROM nginx:stable-alpine
 
 RUN apt-get update && apt-get dist-upgrade -y
 
