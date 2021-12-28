@@ -20,7 +20,7 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v1.2.0
         with:
-          fail: true
+          fail: false
         env:
           LYCHEE_OUT: /tmp/lychee/out.md
 
