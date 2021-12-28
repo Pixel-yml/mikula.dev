@@ -45,12 +45,11 @@ jobs:
           file: ./Dockerfile
           
       - name: Run Snyk to check Docker image for vulnerabilities
-        continue-on-error: true
         uses: snyk/actions/docker@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          command: test
+          command: monitor
           image: "ghcr.io/pixel-yml/mikula.dev:master"
           args: --file=Dockerfile --project-name=mikula.dev
           
