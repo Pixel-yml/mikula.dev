@@ -47,6 +47,7 @@ jobs:
         with:
           name: link_checker_logs
           path: /tmp/lychee/out.md
+          if-no-files-found: ignore
 
       - name: Docker meta
         id: docker_meta
