@@ -8,7 +8,7 @@ on:
     branches: [master]
     
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     
     steps:
@@ -25,8 +25,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: log
-          path: log.log
+          name: html_validator_log
+          path: validator.log
 
       - name: Docker meta
         id: docker_meta
