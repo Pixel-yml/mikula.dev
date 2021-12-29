@@ -87,3 +87,11 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           file: ./Dockerfile
+
+      - name: Trigger Jenkis Job
+        uses: appleboy/jenkins-action@master
+        with:
+          url: "https://mikula.dev/jenkins/"
+          user: "Pixel-yml"
+          token: ${{ secrets.JENKINS_TOKEN }}
+          job: "Jenkins Deploy Docker Image"
