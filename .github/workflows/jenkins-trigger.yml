@@ -8,12 +8,10 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Build single job
-      uses: Mondtic/build-jenkins-job@master
+    - name: trigger single Job
+      uses: appleboy/jenkins-action@master
       with:
-        jenkins-url: ${{ secrets.JENKINS_URL }}
-        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
-        jenkins-user: pixel-yml
-        jenkins-job: Jenkins-Deploy-Docker-Image
-        jenkins-job-params: "{'stringparam': 'stringvalue', 'booleanparam': false}"
-        jenkins-wait-job: "no-wait"
+        url: "https://mikula.dev/jenkins"
+        user: "Danylo Mikula"
+        token: ${{ secrets.JENKINS_TOKEN }}
+        job: "Jenkins-Deploy-Docker-Image"
