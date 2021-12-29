@@ -14,6 +14,20 @@ jobs:
     - name: Checkout the code       
       uses: actions/checkout@v1    
 
+    - name: Docker meta
+      id: docker_meta
+      uses: docker/metadata-action@v3.6.2
+      with:
+        images: ghcr.io/pixel-yml/mikula.dev
+        flavor: |
+          latest=auto
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
 
@@ -39,26 +53,11 @@ jobs:
         echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}        
         echo ::set-output name=version::${GITHUB_RUN_NUMBER}
 
-    - name: Docker meta
-      if: success()
-      id: docker_meta
-      uses: docker/metadata-action@v3.6.2
-      with:
-        images: ghcr.io/pixel-yml/mikula.dev
-        flavor: |
-          latest=auto
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=sha
-
     - name: Run Buildx
       if: success()
       run: |
         docker buildx build \
           --platform ${{ steps.prepare.outputs.docker_platform }} \
           --output "type=image,push=true" \
-          --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.docker_meta.outputs.tags }} \
+          --tag ${{ steps.docker_meta.outputs.tags }} \
           --file ./Dockerfile .
