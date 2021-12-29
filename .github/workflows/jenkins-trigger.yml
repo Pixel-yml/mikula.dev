@@ -1,17 +1,48 @@
-name: trigger jenkins job
+name: test job
 on:
   push:
     branches: [master]
-jobs:
+jobs:   
+  build:    
+    runs-on: ubuntu-18.04    
+    env:      
+      DOCKER_REGISTRY: ghcr.io      
+      DOCKER_IMAGE: pixel-yml/mikula.dev       
+      DOCKER_TARGET_PLATFORM: linux/arm/v7                 
+    steps:    
 
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: trigger single Job
-      uses: appleboy/jenkins-action@master
+    - name: Checkout the code       
+      uses: actions/checkout@v1    
+
+    - name: Set up Docker Buildx      
+      uses: crazy-max/ghaction-docker-buildx@v1      
+      with:        
+        version: latest    
+
+    - name: Prepare      
+      if: success()      
+      id: prepare      
+      run: |        
+        echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}        
+        echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}        
+        echo ::set-output name=version::${GITHUB_RUN_NUMBER}
+
+    - name: Docker meta
+      if: success()
+      id: docker_meta
+      uses: docker/metadata-action@v3.6.2
       with:
-        url: "https://mikula.dev/jenkins"
-        user: "pixel-yml"
-        token: ${{ secrets.JENKINS_TOKEN }}
-        job: "Jenkins-Deploy-Docker-Image"
+        images: ghcr.io/pixel-yml/mikula.dev
+        flavor: |
+          latest=auto
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha
+
+    - name: Run Buildx (push image)      
+      if: success()      
+      run: |        
+        docker buildx build \        --platform ${{ steps.prepare.outputs.docker_platform }} \        --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.docker_meta.outputs.tags }} \        --file ./Dockerfile \        --output type=image,push=true .
