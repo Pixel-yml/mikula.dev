@@ -2,9 +2,10 @@ name: Build Test And Publish Docker Image
 on:
   push:
     branches: [master]
-jobs:   
-  build:    
-    runs-on: ubuntu-18.04    
+jobs:
+  build-test-publish:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
     env:      
       DOCKER_REGISTRY: ghcr.io      
       DOCKER_IMAGE: pixel-yml/mikula.dev       
@@ -13,6 +14,28 @@ jobs:
 
     - name: Checkout the code       
       uses: actions/checkout@v1    
+
+    - name: HTML5 Validator
+      uses: Cyb3r-Jak3/html5validator-action@v7.0.0
+      with:
+        log_level: DEBUG
+        root: web-content/
+        format: json
+        css: true
+
+    - name: Upload HTML Validator Logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: html_validator_log
+        path: log.log
+
+    - name: Link Checker
+      id: lychee
+      uses: lycheeverse/lychee-action@v1.2.0
+      with:
+        fail: false
+      env:
+        LYCHEE_OUT: /tmp/lychee/out.md
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
