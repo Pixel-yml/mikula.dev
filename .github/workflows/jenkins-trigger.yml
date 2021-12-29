@@ -23,6 +23,7 @@ jobs:
         version: latest    
 
     - name: Login to GHCR
+      if: success()
       uses: docker/login-action@v1
       with:
         registry: ghcr.io
@@ -59,4 +60,4 @@ jobs:
           --platform ${{ steps.prepare.outputs.docker_platform }} \
           --output "type=image,push=false" \
           --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \
-          --file ./Dockerfile
+          --file ./Dockerfile .
