@@ -1,4 +1,4 @@
-name: test job
+name: Build Test And Publish Docker Image
 on:
   push:
     branches: [master]
