@@ -47,3 +47,27 @@ jobs:
           --output "type=image,push=true" \
           --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \
           --file ./Dockerfile .
+
+    - name: Run Snyk to check Docker image for vulnerabilities [monitor]
+      uses: snyk/actions/docker@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        command: monitor
+        image: "ghcr.io/pixel-yml/mikula.dev:master"
+        args: --file=Dockerfile --project-name=mikula.dev
+        
+    - name: Run Snyk to check Docker image for vulnerabilities [test]
+      continue-on-error: true
+      uses: snyk/actions/docker@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        command: test
+        image: "ghcr.io/pixel-yml/mikula.dev:master"
+        args: --file=Dockerfile --project-name=mikula.dev
+        
+    - name: Upload result to GitHub Code Scanning
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: snyk.sarif
