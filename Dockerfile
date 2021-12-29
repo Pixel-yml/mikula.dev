@@ -1,6 +1,4 @@
-FROM nginx:alpine
-
-RUN mkdir -p /run/nginx
+FROM nginx:latest
 
 WORKDIR /etc/nginx/
 COPY nginx.conf ./
