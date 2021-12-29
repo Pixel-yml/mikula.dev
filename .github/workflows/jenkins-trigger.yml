@@ -8,12 +8,12 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: "Trigger jenkins job"
-      uses: GoldenspearLLC/build-jenkins-job@master
+    - name: Build single job
+      uses: Mondtic/build-jenkins-job@master
       with:
         jenkins-url: ${{ secrets.JENKINS_URL }}
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
-        user: "pixel-yml"
-        job-path: "job/Jenkins-Deploy-Docker-Image"
-    - name: Get job status
-      run: echo "Job status is ${{ steps.job-build.outputs.job_status }}"
+        jenkins-user: pixel-yml
+        jenkins-job: Jenkins-Deploy-Docker-Image
+        jenkins-job-params: "{'stringparam': 'stringvalue', 'booleanparam': false}"
+        jenkins-wait-job: "no-wait"
