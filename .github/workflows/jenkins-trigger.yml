@@ -59,10 +59,6 @@ jobs:
       run: |
         docker buildx build \
           --platform ${{ steps.prepare.outputs.docker_platform }} \
-          --output "type=image,push=false" \
+          --output "type=image,push=true" \
           --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \
-          --file ./Dockerfile \
-
-    - name: push service
-      run: |
-        docker push ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}
+          --file ./Dockerfile .
