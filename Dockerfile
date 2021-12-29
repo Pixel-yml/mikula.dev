@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
+RUN apk update && apk upgrade && apk add bash
+
 WORKDIR /etc/nginx/
 COPY nginx.conf ./
 
