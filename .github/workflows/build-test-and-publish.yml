@@ -2,6 +2,7 @@ name: Build Test And Publish Docker Image
 on:
   push:
     branches: [master]
+
 jobs:
   build-test-publish:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
@@ -90,7 +91,7 @@ jobs:
         image: "ghcr.io/pixel-yml/mikula.dev:master"
         args: --file=Dockerfile --project-name=mikula.dev
         
-    - name: Upload result to GitHub Code Scanning
+    - name: Upload Snyk Result To GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: snyk.sarif
