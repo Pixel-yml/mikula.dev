@@ -92,6 +92,6 @@ jobs:
         uses: appleboy/jenkins-action@master
         with:
           url: "https://mikula.dev/jenkins/"
-          user: "Pixel-yml"
+          user: "pixel-yml"
           token: ${{ secrets.JENKINS_TOKEN }}
-          job: "Jenkins Deploy Docker Image"
+          job: "Jenkins-Deploy-Docker-Image"
