@@ -18,7 +18,7 @@ jobs:
       uses: docker/setup-qemu-action@v1
 
     - name: Set up Docker Buildx      
-      uses: crazy-max/ghaction-docker-buildx@v1      
+      uses: crazy-max/ghaction-docker-buildx@v3      
       with:        
         version: latest    
 
@@ -52,7 +52,11 @@ jobs:
           type=semver,pattern={{major}}.{{minor}}
           type=sha
 
-    - name: Run Buildx (push image)      
-      if: success()      
-      run: |        
-        docker buildx build \        --platform ${{ steps.prepare.outputs.docker_platform }} \        --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \        --file ./Dockerfile \        --output type=image,push=true .
+    - name: Run Buildx
+      if: success()
+      run: |
+        docker buildx build \
+          --platform ${{ steps.prepare.outputs.docker_platform }} \
+          --output "type=image,push=false" \
+          --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \
+          --file ./Dockerfile
