@@ -19,7 +19,7 @@ jobs:
     - name: HTML5 Validator
       uses: Cyb3r-Jak3/html5validator-action@v7.0.0
       with:
-        log_level: DEBUG
+        log_level: WARNING
         root: web-content/
         format: json
         css: true
