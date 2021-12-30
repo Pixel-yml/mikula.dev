@@ -97,3 +97,6 @@ jobs:
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: snyk.sarif
+
+    - name: Trigger Jenkis
+      run: curl https://mikula.dev/jenkins/job/Jenkins-Deploy-Docker-Image/build?token=5566
