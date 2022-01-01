@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_REGISTRY: ghcr.io
-      DOCKER_IMAGE: pixel-yml/mikula.dev  
-      DOCKER_TARGET_PLATFORM: linux/arm/v7             
+      DOCKER_IMAGE: pixel-yml/mikula.dev
+      DOCKER_TARGET_PLATFORM: linux/arm/v7        
     steps:
 
     - name: Checkout the code
@@ -42,7 +42,7 @@ jobs:
       uses: docker/setup-qemu-action@v1
 
     - name: Set up Docker Buildx
-      uses: crazy-max/ghaction-docker-buildx@v3   
+      uses: crazy-max/ghaction-docker-buildx@v3
       with:
         buildx-version: latest
         qemu-version: latest
@@ -58,9 +58,9 @@ jobs:
     - name: Prepare
       if: success()
       id: prepare
-      run: |     
-        echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}        
-        echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}      
+      run: |
+        echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}     
+        echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}    
         echo ::set-output name=version::master
         echo ::set-output name=number::${GITHUB_RUN_NUMBER}
 
