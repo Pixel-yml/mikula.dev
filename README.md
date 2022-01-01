@@ -6,6 +6,7 @@
 </p>
 <p align="center">
   <a href='https://mikula.dev/jenkins/job/Jenkins-Deploy-Docker-Image/'><img src='https://mikula.dev/jenkins/buildStatus/icon?job=Jenkins-Deploy-Docker-Image'></a>
+  <a href="https://www.codefactor.io/repository/github/pixel-yml/mikula.dev"><img src="https://www.codefactor.io/repository/github/pixel-yml/mikula.dev/badge" alt="CodeFactor" /></a>
   <a href='https://sonarcloud.io/summary/new_code?id=Pixel-yml_mikula.dev'><img src='https://sonarcloud.io/api/project_badges/measure?project=Pixel-yml_mikula.dev&metric=reliability_rating'></a>
   <a href='https://sonarcloud.io/summary/new_code?id=Pixel-yml_mikula.dev'><img src='https://sonarcloud.io/api/project_badges/measure?project=Pixel-yml_mikula.dev&metric=bugs'></a>
   <a href='https://sonarcloud.io/summary/new_code?id=Pixel-yml_mikula.dev'><img src='https://sonarcloud.io/api/project_badges/measure?project=Pixel-yml_mikula.dev&metric=code_smells'></a>
