@@ -1,7 +1,7 @@
 # mikula.dev web page
 <p align="center">
   <a href="https://mikula.dev">
-    <img src="https://mikula.dev/img/pixel.gif" alt="mikula.dev" style="width: 20%; border-radius: 50%; max-width: 20%; height: auto;">
+    <img src="https://github.com/Pixel-yml/mikula.dev/raw/master/web-content/img/pixel.gif" alt="mikula.dev" style="width: 20%; border-radius: 50%; max-width: 20%; height: auto;">
   </a>
 </p>
 <p align="center">
