@@ -7,14 +7,14 @@ jobs:
   build-test-publish:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
-    env:      
-      DOCKER_REGISTRY: ghcr.io      
-      DOCKER_IMAGE: pixel-yml/mikula.dev       
-      DOCKER_TARGET_PLATFORM: linux/arm/v7                 
-    steps:    
+    env:
+      DOCKER_REGISTRY: ghcr.io
+      DOCKER_IMAGE: pixel-yml/mikula.dev  
+      DOCKER_TARGET_PLATFORM: linux/arm/v7             
+    steps:
 
-    - name: Checkout the code       
-      uses: actions/checkout@v1    
+    - name: Checkout the code
+      uses: actions/checkout@v1
 
     - name: HTML5 Validator
       uses: Cyb3r-Jak3/html5validator-action@v7.0.0
@@ -41,11 +41,11 @@ jobs:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
 
-    - name: Set up Docker Buildx      
-      uses: crazy-max/ghaction-docker-buildx@v3      
+    - name: Set up Docker Buildx
+      uses: crazy-max/ghaction-docker-buildx@v3   
       with:
         buildx-version: latest
-        qemu-version: latest 
+        qemu-version: latest
 
     - name: Login to GHCR
       if: success()
@@ -55,14 +55,14 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GHCR_PAT }}
 
-    - name: Prepare      
-      if: success()      
-      id: prepare      
-      run: |        
+    - name: Prepare
+      if: success()
+      id: prepare
+      run: |     
         echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}        
-        echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}        
+        echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}      
         echo ::set-output name=version::master
-        echo ::set-output name=number::${GITHUB_RUN_NUMBER}   
+        echo ::set-output name=number::${GITHUB_RUN_NUMBER}
 
     - name: Run Buildx
       if: success()
@@ -82,7 +82,7 @@ jobs:
         command: monitor
         image: "ghcr.io/pixel-yml/mikula.dev:master"
         args: --file=Dockerfile --project-name=mikula.dev
-        
+
     - name: Run Snyk to check Docker image for vulnerabilities [test]
       continue-on-error: true
       uses: snyk/actions/docker@master
@@ -92,7 +92,7 @@ jobs:
         command: test
         image: "ghcr.io/pixel-yml/mikula.dev:master"
         args: --file=Dockerfile --project-name=mikula.dev
-        
+
     - name: Upload Snyk Result To GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@v1
       with:
