@@ -99,4 +99,4 @@ jobs:
         sarif_file: snyk.sarif
 
     - name: Trigger Jenkis
-      run: curl https://mikula.dev/jenkins/job/Jenkins-Deploy-Docker-Image/build?token=5566
+      run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
