@@ -55,7 +55,7 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GHCR_PAT }}
 
-    - name: Prepare
+    - name: Prepare Buildx
       if: success()
       id: prepare
       run: |
@@ -64,7 +64,7 @@ jobs:
         echo ::set-output name=version::master
         echo ::set-output name=number::${GITHUB_RUN_NUMBER}
 
-    - name: Run Buildx
+    - name: Run Buildx (Build And Push)
       if: success()
       run: |
         docker buildx build \
@@ -98,5 +98,5 @@ jobs:
       with:
         sarif_file: snyk.sarif
 
-    - name: Trigger Jenkis
+    - name: Trigger Jenkis Job
       run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
