@@ -10,7 +10,7 @@ jobs:
     env:
       DOCKER_REGISTRY: ghcr.io
       DOCKER_IMAGE: pixel-yml/mikula.dev
-      DOCKER_TARGET_PLATFORM: linux/arm/v7        
+      DOCKER_TARGET_PLATFORM: linux/arm/v7
     steps:
 
     - name: Checkout the code
@@ -59,8 +59,8 @@ jobs:
       if: success()
       id: prepare
       run: |
-        echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}     
-        echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}    
+        echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}
+        echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}
         echo ::set-output name=version::master
         echo ::set-output name=number::${GITHUB_RUN_NUMBER}
 
