@@ -28,7 +28,7 @@ jobs:
           path: log.log
 
       - name: Link Checker
-        uses: lycheeverse/lychee-action@v1.3.1
+        uses: lycheeverse/lychee-action@v1.3.2
         with:
           fail: true
         env:
