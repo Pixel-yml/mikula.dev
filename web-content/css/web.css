@@ -5,25 +5,27 @@
     url("./fonts/Hack-NF-Mono.woff") format("woff2"),
     url("./fonts/Hack-NF-Mono.ttf") format("ttf"),
     url("./fonts/Hack-NF-Mono.svg#filename") format("svg");
-    }
+}
+
 .view{
     background-color: rgb(117, 180, 180);
 }
-.main {
+.maintext {
     font-family: 'Hack-NF-Mono';
     text-align: center;
     color: azure;
+    margin-top: 8em;
 }
 .pixel-gif {
-    display: flex;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
     border-radius: 50%;
+    margin-top: 5em;
 }
 .btcpay {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30em;
+    height: 18em;
 }
