@@ -1,22 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@font-face {
+    font-family: "Hack-NF-Mono";
+    src: url("./fonts/Hack-NF-Mono.eot");
+    src: url("./fonts/Hack-NF-Mono.woff") format("woff"),
+    url("./fonts/Hack-NF-Mono.woff") format("woff2"),
+    url("./fonts/Hack-NF-Mono.ttf") format("ttf"),
+    url("./fonts/Hack-NF-Mono.svg#filename") format("svg");
+    }
 .view{
     background-color: rgb(117, 180, 180);
-    
 }
 .main {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Hack-NF-Mono';
     text-align: center;
     color: azure;
 }
 .pixel-gif {
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
     border-radius: 50%;
 }
-
 .btcpay {
     display: flex;
     align-items: center;

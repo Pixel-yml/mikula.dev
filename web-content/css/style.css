@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Hack-NF-Mono";
+    src: url("/css/fonts/Hack-NF-Mono.eot");
+    src: url("/css/fonts/Hack-NF-Mono.woff") format("woff"),
+    url("/css/fonts/Hack-NF-Mono.woff") format("woff2"),
+    url("/css/fonts/Hack-NF-Mono.ttf") format("ttf"),
+    url("/css/fonts/Hack-NF-Mono.svg#filename") format("svg");
+    }
