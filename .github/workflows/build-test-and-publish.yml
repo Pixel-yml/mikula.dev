@@ -98,10 +98,26 @@ jobs:
       with:
         sarif_file: snyk.sarif
 
-    - name: Trigger Jenkis Job
-      run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
+    #- name: Trigger Jenkis Job
+      #run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
 
-    - name: Sleep for 20s
-      uses: juliangruber/sleep-action@v1
+    - name: 'Call API'
+      uses: indiesdev/curl@v1
       with:
-        time: 20s
+        # The target URL
+        # Required: true if custom-config is not set
+        url: ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
+
+        # List of response status codes to be accepted, else it will set the job to be failed
+        # If more than one value is needed, you can use comma(,) as seperator
+        # In this case if the response status code is not one of 200, 201 and 204, the job will be failed
+        # Default is 200,201,204
+        accept: 200,201,204
+        
+        # Request timeout (millisec)
+        # Default: 1000
+        timeout: 10000
+
+        # If it is set to true, it will show the response log in the Github UI
+        # Default: false
+        is_debug: true
