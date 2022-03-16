@@ -99,4 +99,4 @@ jobs:
         sarif_file: snyk.sarif
 
     - name: Trigger Jenkis Job
-      run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
+      run: curl --compressed ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
