@@ -100,11 +100,14 @@ jobs:
 
     #- name: Trigger Jenkis Job
       #run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
-
-    - name: trigger single Job
-      uses: appleboy/jenkins-action@master
+      
+    - name: Trigger jenkins job
+      uses: joshlk/jenkins-githubaction@master
       with:
-        url: "https://mikula.dev/jenkins"
-        user: "pixel"
-        token: ${{ secrets.JENKINS_API_TRIGGER }}
-        job: "Jenkins-Deploy-Docker-Image"
+        url: https://mikula.dev/jenkins
+        job_name: Jenkins-Deploy-Docker-Image
+        username: pixel-yml
+        api_token: ${{ secrets.JENKINS_API_TRIGGER }}
+        start_timeout: "1000"
+        timeout: "10000"
+        
