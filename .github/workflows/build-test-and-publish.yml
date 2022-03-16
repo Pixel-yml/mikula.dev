@@ -99,4 +99,9 @@ jobs:
         sarif_file: snyk.sarif
 
     - name: Trigger Jenkis Job
-      run: curl --limit-rate 50K ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
+      run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
+
+    - name: Sleep for 20s
+      uses: juliangruber/sleep-action@v1
+      with:
+        time: 20s
