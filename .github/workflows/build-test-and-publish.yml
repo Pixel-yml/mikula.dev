@@ -112,7 +112,7 @@ jobs:
         # If more than one value is needed, you can use comma(,) as seperator
         # In this case if the response status code is not one of 200, 201 and 204, the job will be failed
         # Default is 200,201,204
-        accept: 200,201,204
+        accept: 200,201,204,503
         
         # Request timeout (millisec)
         # Default: 1000
