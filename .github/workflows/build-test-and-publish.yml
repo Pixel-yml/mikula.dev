@@ -98,16 +98,5 @@ jobs:
       with:
         sarif_file: snyk.sarif
 
-    #- name: Trigger Jenkis Job
-      #run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
-      
-    - name: Trigger jenkins job
-      uses: joshlk/jenkins-githubaction@master
-      with:
-        url: https://mikula.dev/jenkins
-        job_name: Jenkins-Deploy-Docker-Image
-        username: pixel-yml
-        api_token: ${{ secrets.JENKINS_API_TRIGGER }}
-        start_timeout: "1000"
-        timeout: "10000"
-        
+    - name: Trigger Jenkis Job
+      run: curl ${{ secrets.JENKINS_BUILD_TRIGGER_URL }}
