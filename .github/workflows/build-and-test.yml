@@ -13,19 +13,19 @@ jobs:
       - name: Check out
         uses: actions/checkout@v3
 
-      - name: HTML5 Validator
-        uses: Cyb3r-Jak3/html5validator-action@v7.1.0
-        with:
-          log_level: DEBUG
-          root: web-content/
-          format: json
-          css: true
+#      - name: HTML5 Validator
+#        uses: Cyb3r-Jak3/html5validator-action@v7.1.0
+#        with:
+#          log_level: DEBUG
+#          root: web-content/
+#          format: json
+#          css: true
 
-      - name: Upload HTML Validator Logs
-        uses: actions/upload-artifact@v2
-        with:
-          name: html_validator_log
-          path: log.log
+#      - name: Upload HTML Validator Logs
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: html_validator_log
+#          path: log.log
 
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.4.1
